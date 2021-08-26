@@ -18,3 +18,18 @@ class Listing(db.Model):
 
     user = db.relationship("User", back_populates="listingUser",foreign_keys=[userId])
     purchaser = db.relationship("User", back_populates="listingPurchaser",foreign_keys=[purchaserId])
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId':self.userId,
+            'purchaserId':self.purchaserId,
+            'description':self.description,
+            'price':self.price,
+            'condition':self.condition,
+            'category':self.category,
+            'subcategory':self.subcategory,
+            'image':self.image,
+            'sold':self.sold,
+            'createdAt':self.createdAt
+        }
