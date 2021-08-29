@@ -62,7 +62,7 @@ const CreateListing = () => {
             Choose a condition
           </option>
           <option value="Factory New">Factory New</option>
-          <option value="Minmal Wear">Minimal Wear</option>
+          <option value="Minimal Wear">Minimal Wear</option>
           <option value="Field-Tested">Field-Tested</option>
           <option value="Well-Worn">Well-Worn</option>
         </select>

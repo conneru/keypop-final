@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import AllListings from "./components/AllListings";
 import CreateListing from "./components/CreateListing";
+import ListingPage from "./components/ListingPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route path="/listings" exact={true}>
           <AllListings />
+        </Route>
+        <Route path="/listings/:id">
+          <ListingPage />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />

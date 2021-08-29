@@ -1,0 +1,20 @@
+.prevImg {
+  height: 195px;
+  width: 195px;
+  background-color: grey;
+}
+
+.prevDiv {
+  /* display: flex; */
+  /* height: 200px;
+  width: 200px; */
+}
+
+.prevImg:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.price {
+  font-weight: bold;
+}

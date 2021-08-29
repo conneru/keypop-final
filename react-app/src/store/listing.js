@@ -1,4 +1,5 @@
 const GET_ALL_LISTINGS = "listings/getAllListings";
+const GET_ONE_LISTING = "listings/getOneListing";
 const DELETE_LISTINGS = "listings/deleteListing";
 const CREATE_LISTING = "listings/createListing";
 const EDIT_LISTING = "listings/editListing";
@@ -16,6 +17,10 @@ const addListing = (listing) => {
 };
 const editAListing = (listing) => {
   return { type: EDIT_LISTING, listing };
+};
+
+const oneListing = (listing) => {
+  return { type: GET_ONE_LISTING, listing };
 };
 
 export const fetchAllListings = () => async (dispatch) => {
@@ -61,16 +66,27 @@ export const deleteOneListing = (id) => async (dispatch) => {
   }
 };
 
-const initialState = { listings: [] };
+export const fetchOneListing = (id) => async (dispatch) => {
+  const res = await fetch(`/api/listings/${id}`);
+
+  if (res.ok) {
+    const listing = await res.json();
+    dispatch(oneListing(listing));
+  }
+};
+
+const initialState = { listings: [], curListing: {} };
 
 const listingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_LISTINGS:
-      return { ...state, ...action.listings };
+      return { ...state, ...action.listings, curListing: {} };
     case CREATE_LISTING:
       return { ...state, listings: [action.listing, ...state.listings] };
     case EDIT_LISTING:
       return { ...state, ...action.listing };
+    case GET_ONE_LISTING:
+      return { ...state, curListing: action.listing };
     case DELETE_LISTINGS:
       return {
         ...state,

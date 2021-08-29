@@ -14,6 +14,7 @@ def all_listings():
 def create_listing():
     form = ListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
         print('----------------------')
         listing = Listing(
@@ -26,8 +27,9 @@ def create_listing():
         )
         db.session.add(listing)
         db.session.commit()
-
         return listing.to_dict() 
+    else:
+        print(form.errors)
 
 @listings_routes.route('/<int:id>', methods=["PUT"])
 def edit_listing(id):
@@ -54,3 +56,9 @@ def delete_listing(id):
     db.session.delete(listing)
     db.session.commit()
     return 'deleted'
+
+@listings_routes.route('/<int:id>')
+def get_one_listing(id):
+    listing = Listing.query.get(id)
+    
+    return listing.to_dict()

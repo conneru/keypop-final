@@ -31,5 +31,7 @@ class Listing(db.Model):
             'subcategory':self.subcategory,
             'image':self.image,
             'sold':self.sold,
-            'createdAt':self.createdAt
+            'createdAt':self.createdAt,
+            'username':self.user.username,
+            # 'purchaser': self.purchaser.username
         }
