@@ -20,6 +20,12 @@ class Listing(db.Model):
     purchaser = db.relationship("User", back_populates="listingPurchaser",foreign_keys=[purchaserId])
 
     def to_dict(self):
+        if not self.purchaserId:
+            purchaser = None
+        else:
+            purchaser = self.purchaser.username
+
+
         return {
             'id': self.id,
             'userId':self.userId,
@@ -33,5 +39,6 @@ class Listing(db.Model):
             'sold':self.sold,
             'createdAt':self.createdAt,
             'username':self.user.username,
-            # 'purchaser': self.purchaser.username
+            'purchaser':purchaser
+            # 'purchaser': self.purchaser
         }

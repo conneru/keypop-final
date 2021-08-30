@@ -10,8 +10,9 @@ const CreateListing = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [condition, setCondition] = useState("");
   const [category, setCategory] = useState("");
+  const [subcategory, setSubCategory] = useState("");
   const [price, setPrice] = useState("");
-
+  console.log(category.length);
   function submitForm(e) {
     e.preventDefault();
     const listing = {
@@ -21,6 +22,7 @@ const CreateListing = () => {
       condition,
       category,
       price,
+      subcategory,
     };
     dispatch(createListing(listing));
     Redirect("/listings");
@@ -58,7 +60,7 @@ const CreateListing = () => {
           onChange={(e) => setCondition(e.target.value)}
           type="text"
         >
-          <option value="" disabled selected hidden>
+          <option value="" disabled hidden>
             Choose a condition
           </option>
           <option value="Factory New">Factory New</option>
@@ -74,7 +76,7 @@ const CreateListing = () => {
           onChange={(e) => setCategory(e.target.value)}
           type="text"
         >
-          <option value="" disabled selected hidden>
+          <option value="" disabled hidden>
             Choose a category
           </option>
           <option value="Keyboard">Keyboard</option>
@@ -83,8 +85,29 @@ const CreateListing = () => {
           <option value="Switches">Switches</option>
           <option value="Keycaps">Keycaps</option>
         </select>
-        <button type="submit">Submit</button>
       </div>
+      {category !== "Switches" && category.length > 0 ? (
+        <div>
+          <label>Subcategory</label>
+          <select
+            value={subcategory}
+            onChange={(e) => setSubCategory(e.target.value)}
+            type="text"
+          >
+            <option value="" disabled hidden>
+              Choose a subcategory
+            </option>
+            <option value="full">Full-Size (100%)</option>
+            <option value="tkl">TKL (80%)</option>
+            <option value="75">75%</option>
+            <option value="65">65%</option>
+            <option value="60">60%</option>
+            <option value="40">40%</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      ) : null}
+      <button type="submit">Submit</button>
     </form>
   );
 };

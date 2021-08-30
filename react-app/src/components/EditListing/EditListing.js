@@ -10,6 +10,7 @@ const EditListing = ({ listing, setShowModal }) => {
   const [imageUrl, setImageUrl] = useState(listing.image);
   const [condition, setCondition] = useState(listing.condition);
   const [category, setCategory] = useState(listing.category);
+  const [subcategory, setSubCategory] = useState(listing.subcategory);
   const [price, setPrice] = useState(listing.price);
 
   function submitForm(e) {
@@ -21,6 +22,7 @@ const EditListing = ({ listing, setShowModal }) => {
       condition,
       category,
       price,
+      subcategory,
     };
     dispatch(editListing(payload, listing.id));
     setShowModal(false);
@@ -83,8 +85,29 @@ const EditListing = ({ listing, setShowModal }) => {
           <option value="Switches">Switches</option>
           <option value="Keycaps">Keycaps</option>
         </select>
-        <button type="submit">Submit</button>
       </div>
+      {category !== "Switches" && category.length > 0 ? (
+        <div>
+          <label>Subcategory</label>
+          <select
+            value={subcategory}
+            onChange={(e) => setSubCategory(e.target.value)}
+            type="text"
+          >
+            <option value="" disabled hidden>
+              Choose a subcategory
+            </option>
+            <option value="full">Full-Size (100%)</option>
+            <option value="tkl">TKL (80%)</option>
+            <option value="75">75%</option>
+            <option value="65">65%</option>
+            <option value="60">60%</option>
+            <option value="40">40%</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      ) : null}
+      <button type="submit">Submit</button>
     </form>
   );
 };

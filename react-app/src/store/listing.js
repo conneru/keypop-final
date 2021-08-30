@@ -84,7 +84,7 @@ const listingsReducer = (state = initialState, action) => {
     case CREATE_LISTING:
       return { ...state, listings: [action.listing, ...state.listings] };
     case EDIT_LISTING:
-      return { ...state, ...action.listing };
+      return { ...state, curListing: action.listing };
     case GET_ONE_LISTING:
       return { ...state, curListing: action.listing };
     case DELETE_LISTINGS:

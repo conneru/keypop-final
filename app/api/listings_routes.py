@@ -23,7 +23,8 @@ def create_listing():
             image=form.image.data,
             condition = form.condition.data,
             category = form.category.data,
-            price = form.price.data
+            price = form.price.data,
+            subcategory = form.subcategory.data
         )
         db.session.add(listing)
         db.session.commit()
@@ -36,18 +37,23 @@ def edit_listing(id):
     listing = Listing.query.get(id)
     form = ListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
         listing.userId = form.userId.data
         listing.description=form.description.data,
         listing.image=form.image.data,
         listing.condition = form.condition.data,
         listing.category = form.category.data,
+        listing.subcategory = form.subcategory.data,
         listing.price = form.price.data
         db.session.commit()
 
-        listings = Listing.query.order_by(Listing.id.desc()).all()
+        # listings = Listing.query.order_by(Listing.id.desc()).all()
 
-        return {'listings':[listing.to_dict() for listing in listings]}
+        # return {'listings':[listing.to_dict() for listing in listings]}
+        return listing.to_dict()
+    else:
+        print(form.errors)
 
 
 @listings_routes.route('/<int:id>',methods=['DELETE'])

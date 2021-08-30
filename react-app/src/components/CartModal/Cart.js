@@ -17,27 +17,11 @@ const Cart = () => {
   return (
     <div>
       <button onClick={() => setEditClicked(!editClicked)}>edit</button>
-      {/* {cart.length ? (
-        cart.map((item) => (
-          <div>
-            {editClicked ? (
-              <img
-                onClick={() => dispatch(deleteFromCart(item))}
-                className="deleteIcon"
-                alt="delete"
-                src="https://flyclipart.com/thumb2/bin-cancel-circle-delete-garbage-remove-trash-icon-695065.png"
-              ></img>
-            ) : null}
-            <ListingPreview listing={item} />
-          </div>
-        ))
-      ) : (
-        <div>Cart is currently empty</div>
-      )} */}
       {keys.map((user) => (
         <div className="cartUser">
           <p>
-            {cart[user].length} items from {user}
+            {cart[user].length}
+            {cart[user].length > 1 ? " items" : " item"} from {user}
           </p>
           {cart[user].map((listing) => (
             <div>
