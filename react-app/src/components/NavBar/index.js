@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
@@ -10,23 +10,19 @@ import "./NavBar.css";
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   const history = useHistory();
-  const [cart, setCart] = useState(false);
 
   function sellPage() {
     return history.push("/sell");
   }
 
-  function showCart() {
-    return <div className="cart">no way</div>;
-  }
   return (
     <nav>
       <div className="navBar">
-        <NavLink to="/" exact={true} activeClassName="active">
-          Home
+        <NavLink to="/" exact={true} className="homeLink">
+          <span className="logo">keypop</span>
         </NavLink>
 
-        <NavLink to="/listings" exact={true} activeClassName="active">
+        <NavLink to="/listings" exact={true} className="homeLink">
           View listings
         </NavLink>
         {!user ? (
@@ -34,9 +30,21 @@ const NavBar = () => {
             <LoginFormModal /> <SignUpFormModal />
           </div>
         ) : null}
-        {user ? <button onClick={sellPage}>Sell</button> : null}
-        {user ? <CartModal /> : null}
-        {user ? <LogoutButton /> : null}
+        {user ? (
+          <div className="userStuffs">
+            <div onClick={sellPage} className="sellBtn">
+              Sell
+            </div>
+            <div>
+              <CartModal className="cartModal" />
+            </div>
+            <div>
+              <LogoutButton />
+            </div>
+          </div>
+        ) : null}
+        {/* {user ? <CartModal className="cartModal" /> : null}
+        {user ? <LogoutButton /> : null} */}
       </div>
     </nav>
   );

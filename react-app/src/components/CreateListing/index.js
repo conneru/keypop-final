@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
+import { setErrors } from "../../store/errors";
 import { createListing } from "../../store/listing";
+import Errors from "../Errors";
 
 const CreateListing = () => {
   const dispatch = useDispatch();
@@ -12,8 +14,8 @@ const CreateListing = () => {
   const [category, setCategory] = useState("");
   const [subcategory, setSubCategory] = useState("");
   const [price, setPrice] = useState("");
-  console.log(category.length);
-  function submitForm(e) {
+  const history = useHistory();
+  async function submitForm(e) {
     e.preventDefault();
     const listing = {
       userId: user.id,
@@ -24,11 +26,15 @@ const CreateListing = () => {
       price,
       subcategory,
     };
-    dispatch(createListing(listing));
-    Redirect("/listings");
+    const success = await dispatch(createListing(listing));
+    if (success) {
+      dispatch(setErrors([]));
+      history.push(`/listings/${success.id}`);
+    }
   }
   return (
     <form onSubmit={submitForm}>
+      <Errors />
       <div>
         <label>Description</label>
         <input

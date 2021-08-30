@@ -30,7 +30,10 @@ def create_listing():
         db.session.commit()
         return listing.to_dict() 
     else:
-        print(form.errors)
+        errors = form.errors
+        return jsonify([f'{field.capitalize()}: {error}'
+                for field in errors
+                for error in errors[field]]),400
 
 @listings_routes.route('/<int:id>', methods=["PUT"])
 def edit_listing(id):
@@ -53,7 +56,10 @@ def edit_listing(id):
         # return {'listings':[listing.to_dict() for listing in listings]}
         return listing.to_dict()
     else:
-        print(form.errors)
+        errors = form.errors
+        return jsonify([f'{field.capitalize()}: {error}'
+                for field in errors
+                for error in errors[field]]),400
 
 
 @listings_routes.route('/<int:id>',methods=['DELETE'])

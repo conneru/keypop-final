@@ -5,9 +5,10 @@
 }
 
 .prevDiv {
-  /* display: flex; */
-  /* height: 200px;
-  width: 200px; */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0px;
 }
 
 .prevImg:hover {

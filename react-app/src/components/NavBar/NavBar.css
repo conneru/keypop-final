@@ -5,10 +5,28 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  border-bottom: 1px solid black;
-  overflow: scroll;
+  border-bottom: 1px solid rgb(169, 169, 169);
+  /* overflow: scroll; */
 }
 
 .cart {
   position: absolute;
+}
+
+.homeLink {
+  text-decoration: none;
+}
+.logo {
+  font-size: 30px;
+  color: #4ca4b0;
+  padding-left: 10px;
+}
+
+.sellBtn:hover {
+  cursor: pointer;
+}
+
+.userStuffs {
+  display: flex;
+  justify-content: space-around;
 }

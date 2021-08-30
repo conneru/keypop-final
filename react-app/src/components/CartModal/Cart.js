@@ -15,7 +15,7 @@ const Cart = () => {
   const values = Object.values(cart);
   console.log(values);
   return (
-    <div>
+    <div className="wholeCart">
       <button onClick={() => setEditClicked(!editClicked)}>edit</button>
       {keys.map((user) => (
         <div className="cartUser">
@@ -33,6 +33,9 @@ const Cart = () => {
               <ListingPreview listing={listing} />
             </div>
           ))}
+          <div>
+            <button disabled={editClicked}>Checkout</button>
+          </div>
         </div>
       ))}
     </div>

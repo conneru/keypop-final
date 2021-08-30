@@ -3,41 +3,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import LoginFormModal from "../LoginFormModal";
+import Errors from "../Errors";
 import "./Signup.css";
 
-const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+const SignUpForm = ({ setShowModal }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
+  const errors = useSelector((state) => state.errorsReducer);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    const data = await dispatch(
+      signUp(username, email, password, repeatPassword)
+    );
+    if (password !== repeatPassword) {
+      errors.push("PASSWORDS MUST MATCH");
+    } else {
       if (data) {
-        setErrors(data);
+        setShowModal(false);
       }
     }
-  };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
   };
 
   if (user) {
@@ -50,12 +39,8 @@ const SignUpForm = () => {
         alt="signup"
         src="https://cdn.thewirecutter.com/wp-content/media/2021/05/mechanicalkeyboards-2048px-2x1-0036.jpeg?auto=webp&quality=75&crop=2:1&width=1024"
       />
+      <Errors />
       <form onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
         <label>Sign Up</label>
         <div className="all-inputs" name="all">
           <div className="input-container">
@@ -64,7 +49,7 @@ const SignUpForm = () => {
               className="form-input"
               type="text"
               name="username"
-              onChange={updateUsername}
+              onChange={(e) => setUsername(e.target.value)}
               value={username}
             ></input>
           </div>
@@ -74,7 +59,7 @@ const SignUpForm = () => {
               className="form-input"
               type="text"
               name="email"
-              onChange={updateEmail}
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
             ></input>
           </div>
@@ -84,17 +69,17 @@ const SignUpForm = () => {
               className="form-input"
               type="password"
               name="password"
-              onChange={updatePassword}
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
             ></input>
           </div>
           <div className="input-container">
-            <label>Repeat Password</label>
+            <label>Confirm Password</label>
             <input
               className="form-input"
               type="password"
               name="repeat_password"
-              onChange={updateRepeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
               value={repeatPassword}
               required={true}
             ></input>

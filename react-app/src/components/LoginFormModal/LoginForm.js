@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import SignUpFormModal from "../SignupFormModal";
-import SignupFormModal from "../SignupFormModal";
+import Errors from "../Errors";
+
 import "./Login.css";
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -17,7 +17,6 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
     }
   };
 
@@ -37,11 +36,7 @@ const LoginForm = () => {
     <div className="loginDiv">
       <form onSubmit={onLogin}>
         <label>Log In</label>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+        <Errors />
         <div className="all-inputs">
           <div className="input-container">
             <label htmlFor="email">Email</label>
@@ -69,9 +64,6 @@ const LoginForm = () => {
             </button>
           </div>
         </div>
-        <span>
-          Don't have an account? <SignUpFormModal />
-        </span>
       </form>
     </div>
   );

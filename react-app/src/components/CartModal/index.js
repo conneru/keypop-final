@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { Modal2 } from "../../context/Modal";
 import Cart from "./Cart";
-import { load } from "../../store/cart";
+// import { load } from "../../store/cart";
 
 function CartModal() {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch();
 
   return (
     <>

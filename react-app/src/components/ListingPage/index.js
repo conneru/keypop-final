@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { fetchOneListing, deleteOneListing } from "../../store/listing";
 import { addToCart } from "../../store/cart";
 import EditListingModal from "../EditListing";
+import "./ListingPage.css";
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -20,10 +21,12 @@ const ListingPage = () => {
   }
   return (
     <div>
-      <img alt={listing?.id} src={listing?.image}></img>
+      <img alt={listing?.id} src={listing?.image} className="listingImg"></img>
       <div>{listing?.description}</div>
-      <button onClick={() => addCart(listing)}>Add to Cart</button>
-      {user.id === listing.userId ? (
+      {user?.id !== listing.userId ? (
+        <button onClick={() => addCart(listing)}>Add to Cart</button>
+      ) : null}
+      {user?.id === listing.userId ? (
         <div>
           <EditListingModal listing={listing} />
           <button

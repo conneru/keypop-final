@@ -1,3 +1,5 @@
+import { setErrors } from "./errors";
+
 const GET_ALL_LISTINGS = "listings/getAllListings";
 const GET_ONE_LISTING = "listings/getOneListing";
 const DELETE_LISTINGS = "listings/deleteListing";
@@ -42,6 +44,10 @@ export const createListing = (payload) => async (dispatch) => {
   if (res.ok) {
     const listing = await res.json();
     dispatch(addListing(listing));
+    return listing;
+  } else {
+    const errors = await res.json();
+    dispatch(setErrors(errors));
   }
 };
 export const editListing = (payload, id) => async (dispatch) => {

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
 import { editListing } from "../../store/listing";
 
 const EditListing = ({ listing, setShowModal }) => {

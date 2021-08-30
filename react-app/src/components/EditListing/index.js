@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import EditListing from "./EditListing";
 import { Modal } from "../../context/Modal";
+import { setErrors } from "../../store/errors";
+import { useDispatch } from "react-redux";
 
 function EditListingModal({ listing }) {
   const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,7 @@ function EditListingModal({ listing }) {
         <Modal
           onClose={() => {
             setShowModal(false);
+            dispatch(setErrors([]));
           }}
         >
           <EditListing setShowModal={setShowModal} listing={listing} />
