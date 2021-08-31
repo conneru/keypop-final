@@ -1,16 +1,36 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignupFormModal";
 import CartModal from "../CartModal";
+import { login } from "../../store/session";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const ref = useRef();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [proInfo, setProInfo] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    const clickedOutside = (e) => {
+      if (proInfo && ref.current && !ref.current.contains(e.target)) {
+        setProInfo(false);
+      }
+    };
+    document.addEventListener("mousedown", clickedOutside);
+    return () => {
+      document.removeEventListener("mousedown", clickedOutside);
+    };
+  }, [proInfo]);
+
+  const demoHandler = (e) => {
+    e.preventDefault();
+    dispatch(login("new@mail.com", "pass"));
+  };
 
   function sellPage() {
     return history.push("/sell");
@@ -27,8 +47,13 @@ const NavBar = () => {
           View listings
         </NavLink>
         {!user ? (
-          <div>
-            <LoginFormModal /> <SignUpFormModal />
+          <div className="noUser">
+            <span className="demo" onClick={demoHandler}>
+              Demo
+            </span>
+            <div>
+              <LoginFormModal /> <SignUpFormModal />
+            </div>
           </div>
         ) : null}
         {user ? (
@@ -44,16 +69,17 @@ const NavBar = () => {
                 alt="proPic"
                 src={user.profilepic}
                 className="proPic"
-                onClick={() => setProInfo(!proInfo)}
+                onMouseDown={() => setProInfo(!proInfo)}
+                // ref={ref}
               ></img>
             </div>
           </div>
         ) : null}
         {proInfo ? (
-          <div className="proInfo">
+          <div className="proInfo" ref={ref}>
             <div className="profile">Your Profile</div>
             <div className="login">
-              <LogoutButton />
+              <LogoutButton setProInfo={setProInfo} />
             </div>
           </div>
         ) : null}

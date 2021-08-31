@@ -81,7 +81,6 @@ const SignUpForm = ({ setShowModal }) => {
               name="repeat_password"
               onChange={(e) => setRepeatPassword(e.target.value)}
               value={repeatPassword}
-              required={true}
             ></input>
           </div>
           <button type="submit" className="signupBtn">
