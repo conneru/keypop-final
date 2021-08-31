@@ -52,7 +52,7 @@ export const createListing = (payload) => async (dispatch) => {
 };
 export const editListing = (payload, id) => async (dispatch) => {
   const res = await fetch(`/api/listings/${id}`, {
-    method: "PuT",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });

@@ -7,26 +7,32 @@ import { deleteFromCart, load } from "../../store/cart";
 const Cart = () => {
   const [editClicked, setEditClicked] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(load());
-  }, [dispatch]);
   let cart = useSelector((state) => state.cartReducer.cart);
   const keys = Object.keys(cart);
-  const values = Object.values(cart);
-  console.log(values);
+
+  function sellItems(user) {
+    for (let item of cart[user]) {
+      console.log(item);
+    }
+  }
+
   return (
     <div className="wholeCart">
-      <button onClick={() => setEditClicked(!editClicked)}>edit</button>
-      {keys.map((user) => (
+      {keys?.length !== 0 ? (
+        <span onClick={() => setEditClicked(!editClicked)} className="edit">
+          edit
+        </span>
+      ) : null}
+      {keys?.map((user) => (
         <div className="cartUser">
           <p>
-            {cart[user].length}
-            {cart[user].length > 1 ? " items" : " item"} from {user}
+            {cart[user]?.length}
+            {cart[user]?.length > 1 ? " items" : " item"} from {user}
           </p>
-          {cart[user].map((listing) => (
-            <div>
+          {cart[user]?.map((listing) => (
+            <div className="userItems">
               {editClicked ? (
-                <button onClick={() => dispatch(deleteFromCart(listing))}>
+                <button onClick={() => dispatch(deleteFromCart(listing, cart))}>
                   delete
                 </button>
               ) : null}
@@ -34,7 +40,9 @@ const Cart = () => {
             </div>
           ))}
           <div>
-            <button disabled={editClicked}>Checkout</button>
+            <button disabled={editClicked} onClick={() => sellItems(user)}>
+              Checkout
+            </button>
           </div>
         </div>
       ))}

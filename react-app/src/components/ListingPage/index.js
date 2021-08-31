@@ -12,21 +12,38 @@ const ListingPage = () => {
   const history = useHistory();
   const listing = useSelector((state) => state.listingsReducer.curListing);
   const user = useSelector((state) => state.session.user);
+  const cart = useSelector((state) => state.cartReducer.cart);
+  const [inCart, setInCart] = useState(false);
 
   useEffect(() => {
     dispatch(fetchOneListing(id));
-  }, [dispatch, id]);
-  function addCart(listing) {
-    dispatch(addToCart(listing));
+
+    for (let user in cart) {
+      for (let item of cart[user]) {
+        if (item.id === listing.id) {
+          return setInCart(true);
+        }
+      }
+      setInCart(false);
+    }
+    if (Object.keys(cart).length === 0) {
+      setInCart(false);
+    }
+  }, [dispatch, id, cart, listing.id]);
+
+  function addCart(listing, cart) {
+    dispatch(addToCart(listing, cart));
   }
   return (
     <div>
       <img alt={listing?.id} src={listing?.image} className="listingImg"></img>
       <div>{listing?.description}</div>
-      {user?.id !== listing.userId ? (
-        <button onClick={() => addCart(listing)}>Add to Cart</button>
+      {user?.id !== listing?.userId ? (
+        <button onClick={() => addCart(listing, cart)} disabled={inCart}>
+          {inCart ? "Added to Cart" : "Add to Cart"}
+        </button>
       ) : null}
-      {user?.id === listing.userId ? (
+      {user?.id === listing?.userId ? (
         <div>
           <EditListingModal listing={listing} />
           <button

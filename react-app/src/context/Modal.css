@@ -67,6 +67,11 @@
   width: 400px;
   position: absolute;
   background-color: white;
-  border: 1px solid #a50e02;
+  /* border: 1px solid #a50e02; */
+  border-radius: 10px;
   overflow: scroll;
 }
+
+/* #modal2-content::-webkit-scrollbar {
+  display: none;
+} */

@@ -1,6 +1,7 @@
 const ADD_TO_CART = "cart/addToCart";
 const DELETE_FROM_CART = "cart/deleteFromCart";
 const LOAD_CART = "cart/loadCart";
+const CLEAR_CART = "cart/clearCart";
 
 if (!localStorage.getItem("cart")) {
   localStorage.setItem("cart", JSON.stringify({}));
@@ -16,53 +17,67 @@ const loadCart = () => {
   return { type: LOAD_CART };
 };
 
-const deleteCart = (item) => {
-  return { type: DELETE_FROM_CART, item };
+const deleteCart = (cart) => {
+  return { type: DELETE_FROM_CART, cart };
+};
+const cleanCart = (cart) => {
+  return { type: CLEAR_CART, cart };
 };
 
 export const load = () => async (dispatch) => {
   dispatch(loadCart());
 };
 
-export const addToCart = (item) => async (dispatch) => {
+export const clearCart = () => async (dispatch) => {
+  localStorage.setItem("cart", JSON.stringify({}));
+  let cart = localStorage.getItem("cart");
+  cart = JSON.parse(cart);
+  dispatch(cleanCart(cart));
+};
+
+export const addToCart = (item, cart) => async (dispatch) => {
   if (!cart[item.username]) {
     cart[item.username] = [item];
   } else if (!cart[item.username].includes(item)) {
     cart[item.username].push(item);
   }
   localStorage.setItem("cart", JSON.stringify(cart));
-  dispatch(addCart(item));
+  dispatch(addCart(cart));
 };
 
-export const deleteFromCart = (item) => async (dispatch) => {
+export const deleteFromCart = (item, cart) => async (dispatch) => {
   if (cart[item.username].length > 1) {
-    console.log("i hit the right one");
     cart[item.username] = cart[item.username].filter(
       (list) => list.id !== item.id
     );
   } else {
-    console.log("heehe i hit this one");
     delete cart[item.username];
   }
-  console.log("what thehell");
+
   localStorage.setItem("cart", JSON.stringify(cart));
-  dispatch(deleteCart(item));
+  dispatch(deleteCart(cart));
 };
 
 const initialState = { cart: Object.assign({}, cart) };
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TO_CART:
-      return { ...state, cart: Object.assign({}, cart) };
+      return { ...state, cart: Object.assign({}, action.cart) };
     case DELETE_FROM_CART:
       return {
         ...state,
-        cart: Object.assign({}, cart),
+        cart: Object.assign({}, action.cart),
       };
     case LOAD_CART:
       return {
         ...state,
-        cart: Object.assign({}, cart),
+        cart: Object.assign({}, action.cart),
+      };
+    case CLEAR_CART:
+      console.log(cart);
+      return {
+        ...state,
+        cart: Object.assign({}, action.cart),
       };
     default:
       return state;
