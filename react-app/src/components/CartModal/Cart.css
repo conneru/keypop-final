@@ -9,3 +9,15 @@
 .cartUser {
   display: flex;
 }
+
+.cartImg {
+  /* width: 30px; */
+  height: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  /* margin-bottom: 10px; */
+}
+
+.cartImg:hover {
+  cursor: pointer;
+}

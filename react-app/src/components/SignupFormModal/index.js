@@ -3,6 +3,7 @@ import { Modal } from "../../context/Modal";
 import SignUpForm from "./SignUpForm";
 import { useDispatch } from "react-redux";
 import { setErrors } from "../../store/errors";
+import "./Signup.css";
 
 function SignUpFormModal() {
   const [showModal, setShowModal] = useState(false);
@@ -10,9 +11,9 @@ function SignUpFormModal() {
 
   return (
     <>
-      <button id="signup-btn" onClick={() => setShowModal(true)}>
+      <span onClick={() => setShowModal(true)} className="signBtn">
         Sign Up
-      </button>
+      </span>
       {showModal && (
         <Modal
           onClose={() => {

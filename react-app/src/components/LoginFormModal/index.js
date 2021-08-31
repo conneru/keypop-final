@@ -10,9 +10,9 @@ function LoginFormModal() {
 
   return (
     <>
-      <button id="login-btn" onClick={() => setShowModal(true)}>
+      <span onClick={() => setShowModal(true)} className="logBtn">
         Log In
-      </button>
+      </span>
       {showModal && (
         <Modal
           onClose={() => {

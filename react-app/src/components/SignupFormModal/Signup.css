@@ -53,3 +53,7 @@ label {
   margin-left: 50px;
   color: white;
 }
+
+.signBtn {
+  cursor: pointer;
+}

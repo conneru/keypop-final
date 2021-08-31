@@ -7,8 +7,8 @@
 .prevDiv {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  margin: 0px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .prevImg:hover {

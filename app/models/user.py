@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profilepic = db.Column(db.String(500))
+    profilepic = db.Column(db.String(500), default='https://www.avoiderrors.com/wp-content/uploads/2017/06/Create-a-New-User-in-Windows-Server-2016.png')
     bio = db.Column(db.String(500))
     address = db.Column(db.String(200))
     state = db.Column(db.String(100))
@@ -33,5 +33,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profilepic':self.profilepic
         }

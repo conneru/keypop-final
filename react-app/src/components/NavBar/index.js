@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
@@ -9,6 +9,7 @@ import "./NavBar.css";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
+  const [proInfo, setProInfo] = useState(false);
   const history = useHistory();
 
   function sellPage() {
@@ -39,6 +40,19 @@ const NavBar = () => {
               <CartModal className="cartModal" />
             </div>
             <div>
+              <img
+                alt="proPic"
+                src={user.profilepic}
+                className="proPic"
+                onClick={() => setProInfo(!proInfo)}
+              ></img>
+            </div>
+          </div>
+        ) : null}
+        {proInfo ? (
+          <div className="proInfo">
+            <div className="profile">Your Profile</div>
+            <div className="login">
               <LogoutButton />
             </div>
           </div>

@@ -28,5 +28,45 @@
 
 .userStuffs {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+
+.proPic {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.proPic:hover {
+  cursor: pointer;
+}
+
+.proInfo {
+  /* width: 98%; */
+  border: 1px solid black;
+  width: 110px;
+  padding: 10px;
+  left: 92%;
+  top: 68px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* align-items: center; */
+  /* background-color: white; */
+}
+
+.profile {
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+
+.profile:hover {
+  cursor: pointer;
+}
+
+.login {
+  padding-top: 10px;
 }
