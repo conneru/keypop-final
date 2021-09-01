@@ -1,0 +1,67 @@
+.banner {
+  height: 480px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(207, 203, 204);
+  align-items: center;
+}
+.banner2 {
+  height: 480px;
+  display: flex;
+  width: 70%;
+  margin-left: 15%;
+  /* background-color: rgb(207, 203, 204); */
+  align-items: center;
+}
+
+.bannerImg {
+  height: 100%;
+  width: 40%;
+}
+
+.bannerText {
+  /* font-size: 40px; */
+  padding-right: 10%;
+}
+.bannerText2 {
+  /* font-size: 40px; */
+  margin-right: 20%;
+}
+.bannerText3 {
+  /* font-size: 40px; */
+  margin-left: 20%;
+  margin-right: 5%;
+}
+.banner2 {
+  height: 480px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.tranKey {
+  object-fit: scale-down;
+  /* padding-bottom: 115px; */
+  width: 500px;
+  height: 480px;
+}
+p {
+  font-family: "MyWebFontLight";
+}
+.img2 {
+  width: 400px;
+  height: 500px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.shopnow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 30%;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 40px;
+}

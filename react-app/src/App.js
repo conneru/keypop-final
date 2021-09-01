@@ -11,6 +11,7 @@ import { authenticate } from "./store/session";
 import AllListings from "./components/AllListings";
 import CreateListing from "./components/CreateListing";
 import ListingPage from "./components/ListingPage";
+import HomePage from "./components/HomePage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,7 +53,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <Route path="/" exact={true}></Route>
+        <Route path="/" exact={true}>
+          <HomePage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -39,7 +39,7 @@ label {
   display: flex;
   flex-direction: column;
   padding-left: 50px;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 
 .signupBtn {
@@ -54,4 +54,13 @@ label {
 
 .signBtn {
   cursor: pointer;
+}
+
+.title {
+  padding-left: 65px;
+}
+
+.errors {
+  max-width: 200px;
+  padding-left: 10px;
 }

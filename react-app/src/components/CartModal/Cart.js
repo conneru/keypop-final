@@ -4,6 +4,7 @@ import ListingPreview from "../ListingPreview";
 import "./Cart.css";
 import { clearCartName, deleteFromCart } from "../../store/cart";
 import { sellListing } from "../../store/listing";
+import empty from "../../font/empty.jpg";
 
 const Cart = () => {
   const [editClicked, setEditClicked] = useState(false);
@@ -35,7 +36,11 @@ const Cart = () => {
         <span onClick={() => setEditClicked(!editClicked)} className="edit">
           edit
         </span>
-      ) : null}
+      ) : (
+        <div className="emptyContain">
+          <img src={empty} alt="emptycart" className="empty"></img>
+        </div>
+      )}
       {keys?.map((user) => (
         <div className="cartUser">
           <p>

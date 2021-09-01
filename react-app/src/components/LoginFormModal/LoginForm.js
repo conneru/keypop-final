@@ -35,9 +35,11 @@ const LoginForm = () => {
   return (
     <div className="loginDiv">
       <form onSubmit={onLogin}>
-        <label>Log In</label>
-        <Errors />
+        <label className="title2">Log In</label>
         <div className="all-inputs">
+          <div>
+            <Errors />
+          </div>
           <div className="input-container">
             <label htmlFor="email">Email</label>
             <input

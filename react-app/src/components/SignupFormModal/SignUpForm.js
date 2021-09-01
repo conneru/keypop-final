@@ -39,10 +39,12 @@ const SignUpForm = ({ setShowModal }) => {
         alt="signup"
         src="https://cdn.thewirecutter.com/wp-content/media/2021/05/mechanicalkeyboards-2048px-2x1-0036.jpeg?auto=webp&quality=75&crop=2:1&width=1024"
       />
-      <Errors />
       <form onSubmit={onSignUp}>
-        <label>Sign Up</label>
         <div className="all-inputs" name="all">
+          <label className="title">Sign Up</label>
+          <div className="errors">
+            <Errors />
+          </div>
           <div className="input-container">
             <label>User Name</label>
             <input
@@ -87,9 +89,6 @@ const SignUpForm = ({ setShowModal }) => {
             Sign Up
           </button>
         </div>
-        <span>
-          Already have an account? <LoginFormModal />
-        </span>
       </form>
     </div>
   );

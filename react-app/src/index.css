@@ -3,7 +3,12 @@
   font-family: "MyWebFont";
   src: url("./font/GT-America-Extended-Bold-Trial.woff2") format("woff2");
 }
+@font-face {
+  font-family: "MyWebFontLight";
+  src: url("./font/GT-America-Extended-Light-Trial.woff2") format("woff2");
+}
 
 body {
   font-family: "MyWebFont";
+  margin: 0;
 }

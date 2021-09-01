@@ -43,9 +43,9 @@ const NavBar = () => {
           <span className="logo">keypop</span>
         </NavLink>
 
-        <NavLink to="/listings" exact={true} className="homeLink">
-          View listings
-        </NavLink>
+        <span className="homeLink" onClick={() => history.push("/listings")}>
+          Shop
+        </span>
         {!user ? (
           <div className="noUser">
             <span className="demo" onClick={demoHandler}>
