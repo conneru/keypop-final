@@ -2,18 +2,31 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ListingPreview from "../ListingPreview";
 import "./Cart.css";
-import { deleteFromCart, load } from "../../store/cart";
+import { clearCartName, deleteFromCart } from "../../store/cart";
+import { sellListing } from "../../store/listing";
 
 const Cart = () => {
   const [editClicked, setEditClicked] = useState(false);
   const dispatch = useDispatch();
   let cart = useSelector((state) => state.cartReducer.cart);
+  const user = useSelector((state) => state.session.user);
   const keys = Object.keys(cart);
 
-  function sellItems(user) {
-    for (let item of cart[user]) {
-      console.log(item);
+  function sellItems(name) {
+    for (let item of cart[name]) {
+      const payload = {
+        userId: item.userId,
+        description: item.description,
+        image: item.image,
+        condition: item.condition,
+        category: item.category,
+        price: item.price,
+        subcategory: item.subcategory,
+        purchaserId: user.id,
+      };
+      dispatch(sellListing(payload, item.id));
     }
+    dispatch(clearCartName(name));
   }
 
   return (

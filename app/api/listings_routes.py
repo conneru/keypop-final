@@ -6,7 +6,7 @@ listings_routes = Blueprint('listings',__name__)
 
 @listings_routes.route('/')
 def all_listings():
-    listings = Listing.query.order_by(Listing.id.desc()).all()
+    listings = Listing.query.filter(Listing.sold ==False).order_by(Listing.id.desc()).all()
 
     return {'listings':[listing.to_dict() for listing in listings]}
 
@@ -57,6 +57,28 @@ def edit_listing(id):
         return listing.to_dict()
     else:
         errors = form.errors
+        return jsonify([f'{field.capitalize()}: {error}'
+                for field in errors
+                for error in errors[field]]),400
+
+@listings_routes.route('/<int:id>/sell', methods=["PUT"])
+def sell_listing(id):
+    listing = Listing.query.get(id)
+    form = ListingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    if form.validate_on_submit():
+        listing.sold = True
+        listing.purchaserId = form.purchaserId.data
+        db.session.commit()
+
+        # listings = Listing.query.order_by(Listing.id.desc()).all()
+
+        # return {'listings':[listing.to_dict() for listing in listings]}
+        return listing.to_dict()
+    else:
+        errors = form.errors
+        print(errors)
         return jsonify([f'{field.capitalize()}: {error}'
                 for field in errors
                 for error in errors[field]]),400

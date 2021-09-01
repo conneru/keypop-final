@@ -38,11 +38,17 @@ const ListingPage = () => {
     <div>
       <img alt={listing?.id} src={listing?.image} className="listingImg"></img>
       <div>{listing?.description}</div>
-      {user?.id !== listing?.userId ? (
-        <button onClick={() => addCart(listing, cart)} disabled={inCart}>
-          {inCart ? "Added to Cart" : "Add to Cart"}
-        </button>
-      ) : null}
+      {listing?.sold ? (
+        <span>SOLD</span>
+      ) : (
+        <div>
+          {user?.id !== listing?.userId && user ? (
+            <button onClick={() => addCart(listing, cart)} disabled={inCart}>
+              {inCart ? "Added to Cart" : "Add to Cart"}
+            </button>
+          ) : null}
+        </div>
+      )}
       {user?.id === listing?.userId ? (
         <div>
           <EditListingModal listing={listing} />

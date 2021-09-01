@@ -5,6 +5,7 @@ const GET_ONE_LISTING = "listings/getOneListing";
 const DELETE_LISTINGS = "listings/deleteListing";
 const CREATE_LISTING = "listings/createListing";
 const EDIT_LISTING = "listings/editListing";
+const SELL_LISTING = "listings/sellListing";
 
 const getAllListings = (listings) => {
   return { type: GET_ALL_LISTINGS, listings };
@@ -12,6 +13,10 @@ const getAllListings = (listings) => {
 
 const deleteListing = (id) => {
   return { type: DELETE_LISTINGS, id };
+};
+
+const sellAListing = (listing) => {
+  return { type: SELL_LISTING, listing };
 };
 
 const addListing = (listing) => {
@@ -23,6 +28,19 @@ const editAListing = (listing) => {
 
 const oneListing = (listing) => {
   return { type: GET_ONE_LISTING, listing };
+};
+
+export const sellListing = (payload, id) => async (dispatch) => {
+  const res = await fetch(`/api/listings/${id}/sell`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (res.ok) {
+    const listing = await res.json();
+    dispatch(sellAListing(listing));
+  }
 };
 
 export const fetchAllListings = () => async (dispatch) => {
@@ -93,6 +111,19 @@ const listingsReducer = (state = initialState, action) => {
       return { ...state, curListing: action.listing };
     case GET_ONE_LISTING:
       return { ...state, curListing: action.listing };
+    case SELL_LISTING:
+      let checkList = action.listing;
+      if (state.curListing.id !== action.listing.id) {
+        checkList = state.curListing;
+      }
+      console.log(action.listing);
+      return {
+        ...state,
+        listings: [
+          ...state.listings.filter((list) => list.id !== action.listing.id),
+        ],
+        curListing: checkList,
+      };
     case DELETE_LISTINGS:
       return {
         ...state,
