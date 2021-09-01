@@ -9,8 +9,8 @@ const HomePage = () => {
           <h1>BUY. SELL.</h1>
           <h1>DISCOVER UNIQUE KEYBOARDS.</h1>
           <p>
-            Designer. Preloved. Vintage. Thock. Switches. Whatever your style.
-            Find it on Keypop.
+            Tactile. Linear. Clicky. Thocky. Scratchy. Whatever your style. Find
+            it on Keypop.
           </p>
         </div>
 
@@ -38,7 +38,6 @@ const HomePage = () => {
       </div>
       <div className="banner2">
         <img
-          // src="https://onsitego.com/blog/wp-content/uploads/2021/01/Mechanical-Keyboard-Buying-Guide.jpg"
           src="https://freepngimg.com/thumb/keyboard/5-2-keyboard-transparent.png"
           alt="tranKey"
           className="img2"

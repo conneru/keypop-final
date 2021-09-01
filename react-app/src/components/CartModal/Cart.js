@@ -43,22 +43,33 @@ const Cart = () => {
       )}
       {keys?.map((user) => (
         <div className="cartUser">
-          <p>
-            {cart[user]?.length}
-            {cart[user]?.length > 1 ? " items" : " item"} from {user}
-          </p>
-          {cart[user]?.map((listing) => (
-            <div className="userItems">
-              {editClicked ? (
-                <button onClick={() => dispatch(deleteFromCart(listing, cart))}>
-                  delete
-                </button>
-              ) : null}
-              <ListingPreview listing={listing} />
-            </div>
-          ))}
+          <div className="userTitle">
+            <p>
+              {cart[user]?.length}
+              {cart[user]?.length > 1 ? " items" : " item"} from {user}
+            </p>
+          </div>
+          <div className="userItems">
+            {cart[user]?.map((listing) => (
+              <>
+                {editClicked ? (
+                  <span
+                    onClick={() => dispatch(deleteFromCart(listing, cart))}
+                    className="deleteIcon"
+                  >
+                    X
+                  </span>
+                ) : null}
+                <ListingPreview listing={listing} />
+              </>
+            ))}
+          </div>
           <div>
-            <button disabled={editClicked} onClick={() => sellItems(user)}>
+            <button
+              disabled={editClicked}
+              onClick={() => sellItems(user)}
+              className="checkout"
+            >
               Checkout
             </button>
           </div>

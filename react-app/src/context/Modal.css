@@ -72,6 +72,6 @@
   overflow: scroll;
 }
 
-/* #modal2-content::-webkit-scrollbar {
+#modal2-content::-webkit-scrollbar {
   display: none;
-} */
+}
