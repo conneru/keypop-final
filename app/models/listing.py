@@ -39,6 +39,7 @@ class Listing(db.Model):
             'sold':self.sold,
             'createdAt':self.createdAt,
             'username':self.user.username,
+            'profilepic':self.user.profilepic,
             'purchaser':purchaser
             # 'purchaser': self.purchaser
         }

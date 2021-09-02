@@ -3,3 +3,90 @@
   height: 640px;
   object-fit: contain;
 }
+.listingContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.listingWrapper {
+  /* background-color: aqua; */
+  width: 30%;
+}
+
+.profInfo {
+  /* width: 40%; */
+  /* background-color: aquamarine; */
+  display: flex;
+  /* margin-top: 50px;
+  margin-left: 20px; */
+}
+
+.infoList {
+  padding-top: 50px;
+  padding-left: 70px;
+}
+
+.profPic {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.listItem {
+  display: flex;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.info {
+  padding-left: 100px;
+  /* margin-bottom: 20px; */
+  font-family: "MyWebFontLight";
+}
+
+.userInfo {
+  display: flex;
+  padding-left: 60px;
+  padding-top: 60px;
+}
+
+.descript {
+  height: 100px;
+}
+
+.addTo {
+  font-family: "MyWebFont";
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 140px;
+  height: 40px;
+  cursor: pointer;
+  margin-left: 75px;
+  margin-top: 30px;
+}
+
+.addTo:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.sold {
+  font-family: "MyWebFont";
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+  color: black;
+  width: 140px;
+  height: 40px;
+  cursor: pointer;
+  margin-left: 75px;
+  margin-top: 30px;
+  border: none;
+}
