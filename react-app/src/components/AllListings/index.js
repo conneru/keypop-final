@@ -15,13 +15,16 @@ function AllListings() {
 
   const listings = useSelector((state) => state.listingsReducer.listings);
   return (
-    <div className="wrapper">
-      <div className="allList">
-        {listings.map((listing) => (
-          <ListingPreview listing={listing} />
-        ))}
+    <>
+      <h1 className="allTitle">Shop things we love</h1>
+      <div className="wrapper">
+        <div className="allList">
+          {listings.map((listing) => (
+            <ListingPreview listing={listing} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
