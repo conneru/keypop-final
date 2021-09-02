@@ -47,8 +47,9 @@
 
 .userInfo {
   display: flex;
-  padding-left: 60px;
-  padding-top: 60px;
+  margin-left: 60px;
+  margin-top: 60px;
+  cursor: pointer;
 }
 
 .descript {

@@ -45,7 +45,10 @@ const ListingPage = () => {
           ></img>
         </div>
         <div className="listingWrapper">
-          <div className="userInfo">
+          <div
+            className="userInfo"
+            onClick={() => history.push(`/profile/${listing.userId}`)}
+          >
             <img
               alt="proPic"
               src={listing?.profilepic}

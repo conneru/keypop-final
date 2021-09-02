@@ -1,10 +1,15 @@
 import { setErrors } from "./errors";
 
 const SET_USER = "session/SET_USER";
+const GET_USER = "session/GET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 
 const setUser = (user) => ({
   type: SET_USER,
+  payload: user,
+});
+const getUser = (user) => ({
+  type: GET_USER,
   payload: user,
 });
 
@@ -12,7 +17,7 @@ const removeUser = () => ({
   type: REMOVE_USER,
 });
 
-const initialState = { user: null };
+const initialState = { user: null, curUser: null };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
@@ -89,12 +94,22 @@ export const signUp =
     }
   };
 
+export const getOneUser = (id) => async (dispatch) => {
+  const res = await fetch(`/api/users/${id}`);
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(getUser(user));
+  }
+};
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload };
+      return { ...state, user: action.payload };
+    case GET_USER:
+      return { ...state, curUser: action.payload };
     case REMOVE_USER:
-      return { user: null };
+      return { ...state, user: null };
     default:
       return state;
   }

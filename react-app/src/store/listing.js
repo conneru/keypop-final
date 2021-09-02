@@ -6,9 +6,14 @@ const DELETE_LISTINGS = "listings/deleteListing";
 const CREATE_LISTING = "listings/createListing";
 const EDIT_LISTING = "listings/editListing";
 const SELL_LISTING = "listings/sellListing";
+const GET_USER_LISTINGS = "listings/getUserListings";
 
 const getAllListings = (listings) => {
   return { type: GET_ALL_LISTINGS, listings };
+};
+
+const getUserListings = (listings) => {
+  return { type: GET_USER_LISTINGS, listings };
 };
 
 const deleteListing = (id) => {
@@ -99,11 +104,22 @@ export const fetchOneListing = (id) => async (dispatch) => {
   }
 };
 
+export const fetchByUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/listings/user/${userId}`);
+
+  if (res.ok) {
+    const listings = await res.json();
+    dispatch(getUserListings(listings));
+  }
+};
+
 const initialState = { listings: [], curListing: {} };
 
 const listingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_LISTINGS:
+      return { ...state, ...action.listings, curListing: {} };
+    case GET_USER_LISTINGS:
       return { ...state, ...action.listings, curListing: {} };
     case CREATE_LISTING:
       return { ...state, listings: [action.listing, ...state.listings] };

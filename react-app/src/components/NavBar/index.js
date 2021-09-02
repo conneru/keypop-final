@@ -77,7 +77,12 @@ const NavBar = () => {
         ) : null}
         {proInfo ? (
           <div className="proInfo" ref={ref}>
-            <div className="profile">Your Profile</div>
+            <div
+              className="profile"
+              onClick={() => history.push(`/profile/${user.id}`)}
+            >
+              Your Profile
+            </div>
             <div className="login">
               <LogoutButton setProInfo={setProInfo} />
             </div>

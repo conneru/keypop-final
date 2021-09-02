@@ -13,6 +13,7 @@ import CreateListing from "./components/CreateListing";
 import ListingPage from "./components/ListingPage";
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,9 +52,9 @@ function App() {
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
+        <Route path="/profile/:userId" exact={true}>
+          <ProfilePage />
+        </Route>
         <Route path="/" exact={true}>
           <HomePage />
         </Route>
