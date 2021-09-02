@@ -1,7 +1,8 @@
 .listingImg {
   width: 640px;
   height: 640px;
-  object-fit: contain;
+  object-fit: fill;
+  margin-top: 75px;
 }
 .listingContainer {
   display: flex;

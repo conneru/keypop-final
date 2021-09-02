@@ -1,0 +1,41 @@
+.formContain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  appearance: none;
+
+  background-color: transparent;
+  /* padding: 0 1em 0 0; */
+  padding-left: 40px;
+  width: 100%;
+  font-family: "MyWebFontLight";
+  /* font-size: inherit; */
+  /* cursor: inherit; */
+  line-height: inherit;
+}
+
+input {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  font-family: "MyWebFontLight";
+}
+
+.selltitle {
+  padding-top: 50px;
+  padding-bottom: 100px;
+  padding-left: 25px;
+  color: #4ca4b0;
+  font-size: larger;
+}
