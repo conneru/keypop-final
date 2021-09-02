@@ -9,7 +9,7 @@ function ProfilePage() {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.curUser);
-  const listings = useSelector((state) => state.listingsReducer.listings);
+  const listings = useSelector((state) => state.listingsReducer.userListings);
 
   useEffect(() => {
     dispatch(getOneUser(userId));

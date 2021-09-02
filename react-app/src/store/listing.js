@@ -113,12 +113,12 @@ export const fetchByUser = (userId) => async (dispatch) => {
   }
 };
 
-const initialState = { listings: [], curListing: {} };
+const initialState = { listings: [], curListing: {}, userListings: [] };
 
 const listingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_LISTINGS:
-      return { ...state, ...action.listings, curListing: {} };
+      return { ...state, ...action.listings, curListing: {}, userListings: [] };
     case GET_USER_LISTINGS:
       return { ...state, ...action.listings, curListing: {} };
     case CREATE_LISTING:
