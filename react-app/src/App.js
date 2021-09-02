@@ -12,7 +12,7 @@ import AllListings from "./components/AllListings";
 import CreateListing from "./components/CreateListing";
 import ListingPage from "./components/ListingPage";
 import HomePage from "./components/HomePage";
-import FooterNav from "./components/FooterNav";
+import Footer from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,7 +58,7 @@ function App() {
           <HomePage />
         </Route>
       </Switch>
-      {/* <FooterNav /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
