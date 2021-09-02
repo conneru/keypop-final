@@ -10,9 +10,9 @@ function EditListingModal({ listing }) {
 
   return (
     <>
-      <button id="edit-media-btn" onClick={() => setShowModal(true)}>
+      <span id="edit-media-btn" onClick={() => setShowModal(true)}>
         Edit
-      </button>
+      </span>
       {showModal && (
         <Modal
           onClose={() => {

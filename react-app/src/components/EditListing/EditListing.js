@@ -29,6 +29,7 @@ const EditListing = ({ listing, setShowModal }) => {
   }
   return (
     <div className="editList">
+      <label className="ediTitle">EDIT LISTING</label>
       <form onSubmit={submitForm}>
         <div>
           <label>Description</label>
@@ -108,7 +109,9 @@ const EditListing = ({ listing, setShowModal }) => {
             </select>
           </div>
         ) : null}
-        <button type="submit">Submit</button>
+        <button type="submit" className="editTo">
+          Submit
+        </button>
       </form>
     </div>
   );

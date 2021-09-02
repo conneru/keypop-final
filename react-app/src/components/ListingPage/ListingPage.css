@@ -91,3 +91,17 @@
   margin-top: 30px;
   border: none;
 }
+
+.editanddel {
+  padding-left: 90%;
+}
+
+.del {
+  margin-left: 40px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+#edit-media-btn {
+  cursor: pointer;
+}

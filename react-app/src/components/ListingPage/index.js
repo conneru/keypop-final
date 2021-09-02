@@ -35,75 +35,82 @@ const ListingPage = () => {
     dispatch(addToCart(listing, cart));
   }
   return (
-    <div className="listingContainer">
-      <div className="imageWrapper">
-        <img
-          alt={listing?.id}
-          src={listing?.image}
-          className="listingImg"
-        ></img>
-      </div>
-      <div className="listingWrapper">
-        <div className="userInfo">
-          <img alt="proPic" src={listing?.profilepic} className="profPic"></img>
-          <p>{listing?.username}</p>
+    <>
+      <div className="listingContainer">
+        <div className="imageWrapper">
+          <img
+            alt={listing?.id}
+            src={listing?.image}
+            className="listingImg"
+          ></img>
         </div>
-        <div className="profInfo">
-          <div className="infoList">
-            <p className="descript">{listing?.description}</p>
-            <div className="listItem">
-              Price
-              <div className="info">
-                US$ {listing.price ? listing.price.toFixed(2) : null}
-              </div>
-            </div>
-            <div className="listItem">
-              Category
-              <div className="info">{listing?.category}</div>
-            </div>
-            {listing.subcategory && listing?.category !== "Switches" ? (
+        <div className="listingWrapper">
+          <div className="userInfo">
+            <img
+              alt="proPic"
+              src={listing?.profilepic}
+              className="profPic"
+            ></img>
+            <p>{listing?.username}</p>
+          </div>
+          <div className="profInfo">
+            <div className="infoList">
+              <p className="descript">{listing?.description}</p>
               <div className="listItem">
-                Subcategory
-                <div className="info">{listing?.subcategory}</div>
+                Price
+                <div className="info">
+                  US$ {listing.price ? listing.price.toFixed(2) : null}
+                </div>
               </div>
-            ) : null}
-            <div className="listItem">
-              Condition
-              <div className="info">{listing?.condition}</div>
+              <div className="listItem">
+                Category
+                <div className="info">{listing?.category}</div>
+              </div>
+              {listing.subcategory && listing?.category !== "Switches" ? (
+                <div className="listItem">
+                  Subcategory
+                  <div className="info">{listing?.subcategory}</div>
+                </div>
+              ) : null}
+              <div className="listItem">
+                Condition
+                <div className="info">{listing?.condition}</div>
+              </div>
+              {listing?.sold ? (
+                <div className="sold">SOLD</div>
+              ) : (
+                <div>
+                  {user?.id !== listing?.userId && user ? (
+                    <button
+                      onClick={() => addCart(listing, cart)}
+                      disabled={inCart}
+                      className="addTo"
+                    >
+                      {inCart ? "Added to Bag" : "Add to Bag"}
+                    </button>
+                  ) : null}
+                </div>
+              )}
             </div>
-            {listing?.sold ? (
-              <div className="sold">SOLD</div>
-            ) : (
-              <div>
-                {user?.id !== listing?.userId && user ? (
-                  <button
-                    onClick={() => addCart(listing, cart)}
-                    disabled={inCart}
-                    className="addTo"
-                  >
-                    {inCart ? "Added to Bag" : "Add to Bag"}
-                  </button>
-                ) : null}
-              </div>
-            )}
           </div>
         </div>
-        {user?.id === listing?.userId ? (
-          <div>
-            <EditListingModal listing={listing} />
-            <button
-              onClick={() =>
-                dispatch(deleteOneListing(listing.id)).then(() =>
-                  history.push("/listings")
-                )
-              }
-            >
-              Delete
-            </button>
-          </div>
-        ) : null}
       </div>
-    </div>
+      {user?.id === listing?.userId ? (
+        <div className="editanddel">
+          <EditListingModal listing={listing} />
+          <span
+            className="del"
+            onClick={() =>
+              dispatch(deleteOneListing(listing.id)).then(() =>
+                history.push("/listings")
+              )
+            }
+          >
+            Delete
+          </span>
+        </div>
+      ) : null}
+    </>
   );
 };
 

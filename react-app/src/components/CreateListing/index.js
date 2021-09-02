@@ -38,7 +38,9 @@ const CreateListing = () => {
       <div className="formWrap">
         <form onSubmit={submitForm}>
           <div className="selltitle">Create a Listing</div>
-          <Errors />
+          <div className="errs">
+            <Errors />
+          </div>
           <div>
             <label>Description</label>
             <textarea
@@ -54,6 +56,12 @@ const CreateListing = () => {
               type="text"
             ></input>
           </div>
+          {imageUrl ? (
+            <div>
+              <label>Image Preview</label>
+              <img src={imageUrl} alt="imagepreview" className="preveImg"></img>
+            </div>
+          ) : null}
           <div>
             <label>Price ($USD)</label>
             <input
@@ -116,7 +124,7 @@ const CreateListing = () => {
               </select>
             </div>
           ) : null}
-          <button type="submit" className="addTo">
+          <button type="submit" className="subTo">
             Submit
           </button>
         </form>
