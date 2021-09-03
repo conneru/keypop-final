@@ -22,6 +22,7 @@
 
 .cartUser {
   overflow: scroll;
+  margin-right: 20px;
 }
 
 .cartImg:hover {
