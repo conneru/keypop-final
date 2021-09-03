@@ -20,7 +20,7 @@ function AllListings() {
       <div className="wrapper">
         <div className="allList">
           {listings.map((listing) => (
-            <ListingPreview listing={listing} />
+            <ListingPreview key={listing.id} listing={listing} />
           ))}
         </div>
       </div>

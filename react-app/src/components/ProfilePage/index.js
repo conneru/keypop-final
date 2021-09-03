@@ -16,6 +16,7 @@ function ProfilePage() {
   useEffect(() => {
     dispatch(getOneUser(userId));
     dispatch(fetchByUser(userId));
+    setSell(true);
   }, [dispatch, userId]);
 
   function switchSell() {
@@ -60,7 +61,7 @@ function ProfilePage() {
         <div className="wrapper">
           <div className="allList">
             {listings.map((listing) => (
-              <ListingPreview listing={listing} />
+              <ListingPreview key={listing.id} listing={listing} />
             ))}
             {sell && !listings.length ? (
               <div>User doesn't have anything for sale</div>

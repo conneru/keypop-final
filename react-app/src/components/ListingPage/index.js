@@ -100,7 +100,7 @@ const ListingPage = () => {
       </div>
       {user?.id === listing?.userId && user ? (
         <div className="editanddel">
-          <EditListingModal listing={listing} />
+          {listing?.sold ? null : <EditListingModal listing={listing} />}
           <span
             className="del"
             onClick={() =>

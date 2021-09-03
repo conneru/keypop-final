@@ -42,7 +42,7 @@ const Cart = () => {
         </div>
       )}
       {keys?.map((user) => (
-        <div className="cartUser">
+        <div className="cartUser" key={user.id}>
           <div className="userTitle">
             <p>
               {cart[user]?.length}
@@ -60,7 +60,7 @@ const Cart = () => {
                     X
                   </span>
                 ) : null}
-                <ListingPreview listing={listing} />
+                <ListingPreview key={listing.id} listing={listing} />
               </>
             ))}
           </div>

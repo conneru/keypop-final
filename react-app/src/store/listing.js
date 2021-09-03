@@ -146,13 +146,21 @@ const listingsReducer = (state = initialState, action) => {
       if (state.curListing.id !== action.listing.id) {
         checkList = state.curListing;
       }
-      console.log(action.listing);
+
+      let userList = [...state.userListings];
+
+      for (let i = 0; i < userList.length; i++) {
+        if (userList[i].id === action.listing.id) {
+          userList[i] = action.listing;
+        }
+      }
       return {
         ...state,
         listings: [
           ...state.listings.filter((list) => list.id !== action.listing.id),
         ],
         curListing: checkList,
+        userListings: [...userList],
       };
     case DELETE_LISTINGS:
       return {
