@@ -15,6 +15,11 @@ def user_listings(id):
     listings = Listing.query.filter(Listing.userId ==id).order_by(Listing.id.desc()).all()
 
     return {'userListings':[listing.to_dict() for listing in listings]}
+@listings_routes.route('/purchaser/<int:id>')
+def purchased_listings(id):
+    listings = Listing.query.filter(Listing.purchaserId ==id).order_by(Listing.id.desc()).all()
+
+    return {'userListings':[listing.to_dict() for listing in listings]}
 
 @listings_routes.route('/', methods=["POST"])
 def create_listing():

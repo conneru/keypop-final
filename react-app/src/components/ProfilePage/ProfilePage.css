@@ -1,0 +1,23 @@
+.switch {
+  display: flex;
+  margin-left: 45%;
+  margin-bottom: 50px;
+}
+
+.contain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.purc {
+  cursor: pointer;
+}
+
+.sell {
+  cursor: pointer;
+}
+
+.clicked {
+  color: black;
+}

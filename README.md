@@ -1,134 +1,41 @@
-# Flask React Project
+# Keypop
 
-This is the starter for the Flask React project.
+Developed by Conner Underhill - [Keypop](https://keypop.herokuapp.com/)
 
-## Getting started
+## Keypop overview
 
-1. Clone this repository (only this branch)
+Keypop is clone of Depop but instead of clothes it's a marketplace for keyboard enthusiasts to buy and sell used keyboards, parts, or accessories. The mechanical keyboard industry has a strong used market due to many parts being custom made and only purchasable for a limited time or quantity. For many the only way to get these rare keycaps,cases, or full keyboards is a used market!
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+![alt text](https://i.imgur.com/eLcMw4I.png)
 
-2. Install dependencies
+## Application Architecture
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+Keypop is a fullstack application that uses React/Redux for the front end and Flask written with Python for the backend.
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+### React
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+React is a no brainer as reusable components are very useful for example the preview card for a listing on the shop page was reused in the cart and its as simple as passing the individual listing object into the component.
 
-   ```bash
-   pipenv shell
-   ```
+```javascript
+<div className="allList">
+  {listings.map((listing) => (
+    <ListingPreview listing={listing} />
+  ))}
+</div>
+```
 
-   ```bash
-   flask db upgrade
-   ```
+![alt text](https://i.imgur.com/ONqswaY.png)
 
-   ```bash
-   flask seed all
-   ```
+### Redux
 
-   ```bash
-   flask run
-   ```
+Redux is the real star of the show for it's state managment capabilities. Without redux getting the info from the backend would be much more tedious. There are state changes everwhere whether its the listings, cart, or profile page and none of it would update smoothly without Redux.
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+### Flask/SQLAlchemy
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+The backend is done with Flask and written in python. I prefer to write the backend in Python as it feels more efficient. Flask's models and forms are really helpful and simple to use. SQLAlchemy's querying is also very easy to use with the redux state management.
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+# Conclusion Next Steps
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+Keypop is my first solo fullstack app that uses the Flask/Python backend. I really enjoy writing the backend in Python and I want more exposure to the language in general. This is the first project I've done the styling for on my own and it didn't turn out looking like it was from the 90's so I'm quite proud of that.
 
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+There is still a lot I want to implement into Keypop. Ideally it would be an exact clone of Depop and of the biggest parts of that I want to learn to implement is a live chat feature. Besides that there's a lot of cleaning up to do and small things like comments and reviews to be added!
