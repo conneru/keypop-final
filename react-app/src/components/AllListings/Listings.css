@@ -3,6 +3,7 @@
   display: flex;
   max-width: 1200px;
   flex-wrap: wrap;
+  padding-left: 5%;
 }
 
 .allContain {

@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import { fetchByUser, fetchByPurchaser } from "../../store/listing";
 import { getOneUser } from "../../store/session";
 import ListingPreview from "../ListingPreview";
+import PurchasedModal from "../PurchasedModal";
 import "./ProfilePage.css";
 
 function ProfilePage() {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.curUser);
+  const loggedInUser = useSelector((state) => state.session.user);
   const listings = useSelector((state) => state.listingsReducer.userListings);
   const [sell, setSell] = useState(true);
 
@@ -42,6 +44,7 @@ function ProfilePage() {
         <img alt="proPic" src={user?.profilepic} className="profPic"></img>
         <p>{user?.username}</p>
         {/* <p>{user.email}</p> */}
+        {user?.id === loggedInUser?.id ? <PurchasedModal /> : null}
       </div>
       <div className="contain">
         <div className="switch">

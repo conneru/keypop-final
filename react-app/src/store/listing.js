@@ -129,7 +129,12 @@ export const fetchByPurchaser = (userId) => async (dispatch) => {
   }
 };
 
-const initialState = { listings: [], curListing: {}, userListings: [] };
+const initialState = {
+  listings: [],
+  curListing: {},
+  userListings: [],
+  purchasedListings: [],
+};
 
 const listingsReducer = (state = initialState, action) => {
   switch (action.type) {
