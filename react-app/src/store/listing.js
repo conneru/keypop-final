@@ -87,6 +87,10 @@ export const editListing = (payload, id) => async (dispatch) => {
   if (res.ok) {
     const listing = await res.json();
     dispatch(editAListing(listing));
+    return true;
+  } else {
+    const errors = await res.json();
+    dispatch(setErrors(errors));
   }
 };
 

@@ -19,18 +19,18 @@ function ProfilePage() {
     setSell(true);
   }, [dispatch, userId]);
 
-  function switchSell() {
-    if (!sell) {
-      setSell(!sell);
-      dispatch(fetchByUser(userId));
-    }
-  }
-  function switchPurc() {
-    if (sell) {
-      setSell(!sell);
-      dispatch(fetchByPurchaser(userId));
-    }
-  }
+  // function switchSell() {
+  //   if (!sell) {
+  //     setSell(!sell);
+  //     dispatch(fetchByUser(userId));
+  //   }
+  // }
+  // function switchPurc() {
+  //   if (sell) {
+  //     setSell(!sell);
+  //     dispatch(fetchByPurchaser(userId));
+  //   }
+  // }
 
   if (!user) {
     return "404 user not found";
@@ -38,25 +38,20 @@ function ProfilePage() {
 
   return (
     <div>
-      <div className="userInfo">
+      <div className="userInfo2">
         <img alt="proPic" src={user?.profilepic} className="profPic"></img>
         <p>{user?.username}</p>
         {/* <p>{user.email}</p> */}
       </div>
       <div className="contain">
         <div className="switch">
-          <label
-            className={`sell ${sell ? "clicked" : null}`}
-            onClick={switchSell}
-          >
-            Selling
-          </label>
-          <label
+          <label className={`sell`}>Listings</label>
+          {/* <label
             className={`purc ${!sell ? "clicked" : null}`}
             onClick={switchPurc}
           >
             Purchased
-          </label>
+          </label> */}
         </div>
         <div className="wrapper">
           <div className="allList">
@@ -64,11 +59,11 @@ function ProfilePage() {
               <ListingPreview key={listing.id} listing={listing} />
             ))}
             {sell && !listings.length ? (
-              <div>User doesn't have anything for sale</div>
+              <div>{user.username} hasn't listed anything for sale</div>
             ) : null}
-            {!sell && !listings.length ? (
+            {/* {!sell && !listings.length ? (
               <div>User hasn't purchased anything</div>
-            ) : null}
+            ) : null} */}
           </div>
         </div>
       </div>

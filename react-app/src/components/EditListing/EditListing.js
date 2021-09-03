@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editListing } from "../../store/listing";
 import "./EditList.css";
+import Errors from "../Errors";
 
 const EditListing = ({ listing, setShowModal }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const EditListing = ({ listing, setShowModal }) => {
   const [subcategory, setSubCategory] = useState(listing.subcategory);
   const [price, setPrice] = useState(listing.price);
 
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
     const payload = {
       userId: user.id,
@@ -24,13 +25,19 @@ const EditListing = ({ listing, setShowModal }) => {
       price,
       subcategory,
     };
-    dispatch(editListing(payload, listing.id));
-    setShowModal(false);
+
+    const success = await dispatch(editListing(payload, listing.id));
+    if (success) {
+      setShowModal(false);
+    }
   }
   return (
     <div className="editList">
       <label className="ediTitle">EDIT LISTING</label>
       <form onSubmit={submitForm}>
+        <div className="editErr">
+          <Errors />
+        </div>
         <div>
           <label>Description</label>
           <textarea
@@ -40,7 +47,7 @@ const EditListing = ({ listing, setShowModal }) => {
           ></textarea>
         </div>
         <div>
-          <label>ImageUrl</label>
+          <label>Image Url</label>
           <input
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}

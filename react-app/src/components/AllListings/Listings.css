@@ -5,14 +5,22 @@
   flex-wrap: wrap;
 }
 
-.wrapper {
+.allContain {
   display: flex;
   justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .allTitle {
   font-size: larger;
 
-  padding-left: 40%;
+  /* padding-left: 40%; */
   padding-top: 100px;
+  padding-bottom: 20px;
 }

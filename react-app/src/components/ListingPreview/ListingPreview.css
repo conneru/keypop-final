@@ -9,7 +9,7 @@
   position: relative;
   flex-direction: column;
   /* padding: 10px; */
-  margin: 10px;
+  margin: 10px 10px 0px 10px;
 }
 
 .prevImg:hover {
@@ -19,6 +19,7 @@
 
 .price {
   font-weight: bold;
+  padding-left: 10px;
 }
 
 .overlay {

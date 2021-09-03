@@ -49,7 +49,7 @@ const CreateListing = () => {
             ></textarea>
           </div>
           <div>
-            <label>ImageUrl</label>
+            <label>Image Url</label>
             <input
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
