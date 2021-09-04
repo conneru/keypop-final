@@ -62,7 +62,9 @@ function ProfilePage() {
               <ListingPreview key={listing.id} listing={listing} />
             ))}
             {sell && !listings.length ? (
-              <div>{user.username} hasn't listed anything for sale</div>
+              <div className="noList">
+                {user.username} hasn't listed anything for sale
+              </div>
             ) : null}
             {/* {!sell && !listings.length ? (
               <div>User hasn't purchased anything</div>

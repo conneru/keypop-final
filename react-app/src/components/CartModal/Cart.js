@@ -34,7 +34,7 @@ const Cart = () => {
     <div className="wholeCart">
       {keys?.length !== 0 ? (
         <span onClick={() => setEditClicked(!editClicked)} className="edit">
-          edit
+          {editClicked ? "Done" : "Edit"}
         </span>
       ) : (
         <div className="emptyContain">

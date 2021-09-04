@@ -25,7 +25,12 @@
 
 .userInfo2 {
   display: flex;
+  align-items: center;
   margin-left: 15%;
   margin-top: 60px;
   margin-bottom: 100px;
+}
+
+.noList {
+  padding-right: 75px;
 }

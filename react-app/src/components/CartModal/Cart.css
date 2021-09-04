@@ -1,12 +1,15 @@
 .deleteIcon {
   position: relative;
-  display: inline-block;
+  display: block;
   /* width: 50px;
   height: 50px; */
   /* display: flex; */
   /* right: 5px; */
   cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 20px;
   left: 225px;
+  bottom: 20px;
 }
 
 .userItems {
@@ -16,13 +19,13 @@
   /* width: 30px; */
   height: 20px;
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 30px;
   /* margin-bottom: 10px; */
 }
 
 .cartUser {
   overflow: scroll;
-  margin-right: 20px;
+  /* padding-right: 20px; */
   overflow-y: hidden;
 }
 
@@ -32,7 +35,7 @@
 
 .edit {
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 340px;
 }
 
 .emptyContain {
