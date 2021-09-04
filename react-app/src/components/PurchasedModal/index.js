@@ -12,12 +12,14 @@ function PurchasedModal() {
 
   return (
     <>
-      <img
-        onClick={() => setShowModal(true)}
-        src={purchased}
-        alt="reciept"
-        className="reciept"
-      ></img>
+      <div className="reciept">
+        <img
+          onClick={() => setShowModal(true)}
+          src={purchased}
+          alt="reciept"
+        ></img>
+        <div>Purchases</div>
+      </div>
       {showModal && (
         <Modal
           onClose={() => {

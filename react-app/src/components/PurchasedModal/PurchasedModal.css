@@ -31,7 +31,10 @@
 }
 
 .reciept {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+  align-items: center;
   width: 75px;
   height: 75px;
   margin-left: 71%;
