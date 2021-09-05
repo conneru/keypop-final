@@ -5,12 +5,12 @@ from wtforms.validators import DataRequired,ValidationError
 def descript_length(form,field):
         description = field.data
         if len(description) > 500:
-            raise ValidationError('This field must be less than 500 characters')
+            raise ValidationError('This field must be 500 characters or less')
 
 def url_length(form,field):
         image = field.data
         if len(image) > 500:
-            raise ValidationError('This field must be less than 500 characters')
+            raise ValidationError('This field must be 500 characters or less')
 def price_length(form,field):
     price = field.data
     if price > 999999999:

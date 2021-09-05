@@ -15,13 +15,13 @@ def user_exists(form, field):
 def name_length(form,field):
     username = field.data
     if len(username) > 30:
-        raise ValidationError('Username must be less than 30 characters.')
+        raise ValidationError('Username must be 30 characters or less.')
     elif len(username) < 4:
         raise ValidationError('Username must be more than 3 characters')
 def pass_length(form,field):
     password = field.data
     if len(password) > 20:
-        raise ValidationError('Password must be less than 20 characters.')
+        raise ValidationError('Password must be 20 characters or less.')
     elif len(password) < 4:
         raise ValidationError('Password must be more than 3 characters')
 
