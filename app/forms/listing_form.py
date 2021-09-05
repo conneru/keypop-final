@@ -24,9 +24,9 @@ class ListingForm(FlaskForm):
     description = StringField('description',validators=[DataRequired(),descript_length])
     price = IntegerField('price',validators=[DataRequired(),price_length])
     image = StringField('image',validators=[DataRequired(),url_length])
-    condition = SelectField('condition',choices=[('Factory New','Factory New'),('Minimal Wear','Minimal Wear'),('Field-Tested','Field-Tested'),('Well-Worn','Well-Worn')],validators=[DataRequired()])
+    condition = SelectField('condition',choices=[('Factory New','Factory New'),('Minimal Wear','Minimal Wear'),('Field-Tested','Field-Tested'),('Well-Worn','Well-Worn'),("Battle-Scarred","Battle-Scarred")],validators=[DataRequired()])
     category = SelectField('category', choices=[('Keyboard','Keyboard'),('Case','Case'),('Switches','Switches'),('PCB','PCB'),('Keycaps','Keycaps')],validators=[DataRequired()])
-    subcategory = SelectField('category', choices=[('tkl','TKL (80%)'),('full','Full-Size(100%)'),('75','75%'),('65','65%'),('60','60%'),('40','40%'),('other','other'),('',''),(None,None)])
+    subcategory = SelectField('category', choices=[('TKL (80%)','TKL (80%)'),('Full-Size','Full-Size(100%)'),('75%','75%'),('65%','65%'),('60%','60%'),('40%','40%'),('Other','Other'),('',''),(None,None)])
     purchaserId =IntegerField('purchaserId')
     sold = BooleanField('sold')
 

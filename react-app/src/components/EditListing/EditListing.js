@@ -83,6 +83,7 @@ const EditListing = ({ listing, setShowModal }) => {
             <option value="Minimal Wear">Minimal Wear</option>
             <option value="Field-Tested">Field-Tested</option>
             <option value="Well-Worn">Well-Worn</option>
+            <option value="Battle-Scarred">Battle-Scarred</option>
           </select>
         </div>
         <div>
@@ -113,13 +114,13 @@ const EditListing = ({ listing, setShowModal }) => {
               <option value="" disabled hidden>
                 Choose a subcategory
               </option>
-              <option value="full">Full-Size (100%)</option>
-              <option value="tkl">TKL (80%)</option>
-              <option value="75">75%</option>
-              <option value="65">65%</option>
-              <option value="60">60%</option>
-              <option value="40">40%</option>
-              <option value="other">Other</option>
+              <option value="Full-Size">Full-Size (100%)</option>
+              <option value="TKL (80%)">TKL (80%)</option>
+              <option value="75%">75%</option>
+              <option value="65%">65%</option>
+              <option value="60%">60%</option>
+              <option value="40%">40%</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         ) : null}
