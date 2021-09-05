@@ -33,10 +33,11 @@
 
 .reciept {
   display: flex;
+  position: fixed;
   flex-direction: column;
   cursor: pointer;
   align-items: center;
   width: 75px;
   height: 75px;
-  margin-left: 71%;
+  margin-left: 75%;
 }

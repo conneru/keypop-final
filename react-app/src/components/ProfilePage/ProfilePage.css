@@ -1,13 +1,14 @@
 .switch {
   display: flex;
-  margin-left: 45%;
+  /* margin-left: 45%; */
   margin-bottom: 50px;
 }
 
 .contain {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 /* .purc {
@@ -19,14 +20,10 @@
   color: black;
 } */
 
-.sell {
-  padding-left: 4%;
-}
-
 .userInfo2 {
   display: flex;
   align-items: center;
-  margin-left: 15%;
+  margin-left: 10%;
   margin-top: 60px;
   margin-bottom: 100px;
 }

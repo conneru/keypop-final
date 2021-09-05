@@ -49,12 +49,6 @@ function ProfilePage() {
       <div className="contain">
         <div className="switch">
           <label className={`sell`}>Listings</label>
-          {/* <label
-            className={`purc ${!sell ? "clicked" : null}`}
-            onClick={switchPurc}
-          >
-            Purchased
-          </label> */}
         </div>
         <div className="wrapper">
           <div className="allList">
@@ -66,9 +60,6 @@ function ProfilePage() {
                 {user.username} hasn't listed anything for sale
               </div>
             ) : null}
-            {/* {!sell && !listings.length ? (
-              <div>User hasn't purchased anything</div>
-            ) : null} */}
           </div>
         </div>
       </div>

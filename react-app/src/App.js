@@ -34,24 +34,15 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path="/sell">
+        <ProtectedRoute path="/sell">
           <CreateListing />
-        </Route>
+        </ProtectedRoute>
         <Route path="/listings" exact={true}>
           <AllListings />
         </Route>
         <Route path="/listings/:id">
           <ListingPage />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
         <Route path="/profile/:userId" exact={true}>
           <ProfilePage />
         </Route>
