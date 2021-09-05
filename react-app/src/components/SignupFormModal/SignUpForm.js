@@ -12,7 +12,6 @@ const SignUpForm = ({ setShowModal }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
-  const errors = useSelector((state) => state.errorsReducer);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -20,12 +19,9 @@ const SignUpForm = ({ setShowModal }) => {
     const data = await dispatch(
       signUp(username, email, password, repeatPassword)
     );
-    if (password !== repeatPassword) {
-      errors.push("PASSWORDS MUST MATCH");
-    } else {
-      if (data) {
-        setShowModal(false);
-      }
+
+    if (data) {
+      setShowModal(false);
     }
   };
 
@@ -41,7 +37,7 @@ const SignUpForm = ({ setShowModal }) => {
       />
       <form onSubmit={onSignUp}>
         <div className="all-inputs" name="all">
-          <label className="title">Sign Up</label>
+          <label className="titlesign">Sign Up</label>
           <div className="errors">
             <Errors />
           </div>
