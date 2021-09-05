@@ -32,6 +32,11 @@ const NavBar = () => {
     dispatch(login("demo@aa.io", "password"));
   };
 
+  function profPage() {
+    history.push(`/profile/${user.id}`);
+    setProInfo(false);
+  }
+
   function sellPage() {
     return history.push("/sell");
   }
@@ -77,10 +82,7 @@ const NavBar = () => {
         ) : null}
         {proInfo ? (
           <div className="proInfo" ref={ref}>
-            <div
-              className="profile"
-              onClick={() => history.push(`/profile/${user.id}`)}
-            >
+            <div className="profile" onClick={profPage}>
               Your Profile
             </div>
             <div className="login">
