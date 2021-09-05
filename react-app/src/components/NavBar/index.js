@@ -29,7 +29,7 @@ const NavBar = () => {
 
   const demoHandler = (e) => {
     e.preventDefault();
-    dispatch(login("new@mail.com", "pass"));
+    dispatch(login("demo@aa.io", "password"));
   };
 
   function sellPage() {

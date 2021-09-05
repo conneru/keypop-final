@@ -37,8 +37,8 @@ const CreateListing = () => {
     <div className="formContain">
       <div className="formWrap">
         <form onSubmit={submitForm}>
-          <div className="selltitle">Create a Listing</div>
           <div className="errs">
+            <div className="selltitle">Create a Listing</div>
             <Errors />
           </div>
           <div>
@@ -68,6 +68,7 @@ const CreateListing = () => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               type="number"
+              min={1}
             ></input>
           </div>
           <div>

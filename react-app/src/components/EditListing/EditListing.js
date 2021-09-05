@@ -60,6 +60,7 @@ const EditListing = ({ listing, setShowModal }) => {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             type="number"
+            min={1}
           ></input>
         </div>
         <div>
