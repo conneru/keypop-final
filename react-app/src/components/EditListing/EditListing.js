@@ -51,9 +51,15 @@ const EditListing = ({ listing, setShowModal }) => {
           <input
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            type="text"
+            type="url"
           ></input>
         </div>
+        {imageUrl ? (
+          <div className="preveImg">
+            <label>Image Preview</label>
+            <img src={imageUrl} alt="imagepreview"></img>
+          </div>
+        ) : null}
         <div>
           <label>Price ($USD)</label>
           <input

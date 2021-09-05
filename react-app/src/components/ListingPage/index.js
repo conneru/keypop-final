@@ -42,6 +42,10 @@ const ListingPage = () => {
             alt={listing?.id}
             src={listing?.image}
             className="listingImg"
+            onError={(e) =>
+              (e.target.src =
+                "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg")
+            }
           ></img>
         </div>
         <div className="listingWrapper">

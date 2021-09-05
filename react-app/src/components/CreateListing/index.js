@@ -53,13 +53,13 @@ const CreateListing = () => {
             <input
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
-              type="text"
+              type="url"
             ></input>
           </div>
           {imageUrl ? (
-            <div>
+            <div className="preveImg">
               <label>Image Preview</label>
-              <img src={imageUrl} alt="imagepreview" className="preveImg"></img>
+              <img src={imageUrl} alt="imagepreview"></img>
             </div>
           ) : null}
           <div>
