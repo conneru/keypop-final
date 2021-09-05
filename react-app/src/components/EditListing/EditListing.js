@@ -44,6 +44,7 @@ const EditListing = ({ listing, setShowModal }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="textarea"
+            className="editdescript"
           ></textarea>
         </div>
         <div>

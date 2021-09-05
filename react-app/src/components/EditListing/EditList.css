@@ -26,3 +26,7 @@
 .editErr {
   padding-left: 85px;
 }
+
+.editdescript {
+  resize: vertical;
+}

@@ -46,6 +46,7 @@ const CreateListing = () => {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              className="editdescript"
             ></textarea>
           </div>
           <div>
