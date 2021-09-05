@@ -26,7 +26,8 @@
 .allListPur {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 70px;
+  justify-content: center;
+  /* padding-left: 70px; */
   padding-bottom: 60px;
 }
 
