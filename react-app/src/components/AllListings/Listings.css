@@ -1,9 +1,9 @@
 .allList {
   /* margin-top: 100px; */
   display: flex;
+  justify-content: center;
   max-width: 1200px;
   flex-wrap: wrap;
-  padding-left: 5%;
 }
 
 .allContain {
