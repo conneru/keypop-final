@@ -11,7 +11,7 @@ class Listing(db.Model):
     price = db.Column(db.Integer, nullable = False)
     condition = db.Column(db.String(100),nullable = False)
     category = db.Column(db.String(100),nullable = False)
-    subcategory = db.Column(db.String(100))
+    subcategory = db.Column(db.String(100),default='')
     image = db.Column(db.String(500),nullable = False)
     sold = db.Column(db.Boolean, default=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)
