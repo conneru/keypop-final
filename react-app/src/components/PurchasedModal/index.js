@@ -12,12 +12,8 @@ function PurchasedModal() {
 
   return (
     <>
-      <div className="reciept">
-        <img
-          onClick={() => setShowModal(true)}
-          src={purchased}
-          alt="reciept"
-        ></img>
+      <div className="reciept" onClick={() => setShowModal(true)}>
+        <img src={purchased} alt="reciept"></img>
         <div>Purchases</div>
       </div>
       {showModal && (
