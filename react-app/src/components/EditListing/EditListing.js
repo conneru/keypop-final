@@ -112,9 +112,7 @@ const EditListing = ({ listing, setShowModal }) => {
               onChange={(e) => setSubCategory(e.target.value)}
               type="text"
             >
-              <option value="" disabled hidden>
-                Choose a subcategory
-              </option>
+              <option value="">No Subcategory</option>
               <option value="Full-Size">Full-Size (100%)</option>
               <option value="TKL (80%)">TKL (80%)</option>
               <option value="75%">75%</option>
