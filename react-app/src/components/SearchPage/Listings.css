@@ -1,0 +1,84 @@
+.allList {
+  /* margin-top: 100px; */
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+.allContain {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.allTitle {
+  font-size: larger;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding-left: 40%; */
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.searchOpt {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 1200px;
+  margin-bottom: 20px;
+}
+
+.searchSel {
+  /* appearance: none; */
+  font-family: "MyWebFontLight";
+}
+
+.selectedOpt {
+  font-family: "MyWebFontLight";
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  min-width: 150px;
+  max-width: 300px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 50px;
+}
+
+.selectedOnes {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.noSearch {
+  margin-top: 20px;
+}
+
+.input-icons i {
+  position: absolute;
+  /* left: 30%; */
+}
+.icon {
+  /* padding: 10px; */
+  padding-top: 2.5px;
+  color: green;
+  min-width: 50px;
+  padding-left: 2.5px;
+  /* text-align: center; */
+}
+
+.input-field {
+  /* width: 100%; */
+  /* padding: 10px; */
+  text-align: center;
+}

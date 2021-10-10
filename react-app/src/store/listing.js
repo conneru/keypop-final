@@ -8,9 +8,13 @@ const EDIT_LISTING = "listings/editListing";
 const SELL_LISTING = "listings/sellListing";
 const GET_USER_LISTINGS = "listings/getUserListings";
 const GET_PURCHASED_LISTINGS = "listings/getUserListings";
+const GET_SPECIFIC_LISTINGS = "listings/getSpecific";
 
 const getAllListings = (listings) => {
   return { type: GET_ALL_LISTINGS, listings };
+};
+export const getSomeListings = (listings) => {
+  return { type: GET_SPECIFIC_LISTINGS, listings };
 };
 
 const getUserListings = (listings) => {
@@ -128,6 +132,18 @@ export const fetchByPurchaser = (userId) => async (dispatch) => {
     dispatch(getPurchasedListings(listings));
   }
 };
+export const fetchByGenre = (payload) => async (dispatch) => {
+  const res = await fetch(`/api/listings/genre`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (res.ok) {
+    const listings = await res.json();
+    dispatch(getSomeListings(listings));
+  }
+};
 
 const initialState = {
   listings: [],
@@ -177,6 +193,11 @@ const listingsReducer = (state = initialState, action) => {
         listings: [
           ...state.listings.filter((listing) => listing.id !== action.id),
         ],
+      };
+    case GET_SPECIFIC_LISTINGS:
+      return {
+        ...state,
+        ...action.listings,
       };
     default:
       return state;

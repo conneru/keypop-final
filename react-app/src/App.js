@@ -14,6 +14,7 @@ import ListingPage from "./components/ListingPage";
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import ProfilePage from "./components/ProfilePage";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/listings" exact={true}>
           <AllListings />
+        </Route>
+        <Route path="/search/:query" exact={true}>
+          <SearchPage />
         </Route>
         <Route path="/listings/:id">
           <ListingPage />

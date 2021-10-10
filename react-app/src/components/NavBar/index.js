@@ -7,12 +7,14 @@ import SignUpFormModal from "../SignupFormModal";
 import CartModal from "../CartModal";
 import { login } from "../../store/session";
 import "./NavBar.css";
+import { fetchByGenre } from "../../store/listing";
 
 const NavBar = () => {
   const ref = useRef();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [proInfo, setProInfo] = useState(false);
+  const [search, setSearch] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -26,6 +28,12 @@ const NavBar = () => {
       document.removeEventListener("mousedown", clickedOutside);
     };
   }, [proInfo]);
+
+  async function searchBar(e) {
+    e.preventDefault();
+    history.push(`/search/${search}`);
+    setSearch("");
+  }
 
   const demoHandler = (e) => {
     e.preventDefault();
@@ -48,6 +56,16 @@ const NavBar = () => {
           <span className="logo">keypop</span>
         </NavLink>
 
+        <form onSubmit={(e) => searchBar(e)} className="input-icons">
+          <i class="fas fa-search icon"></i>
+          <input
+            id="searchbar"
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search Keypop"
+          ></input>
+        </form>
         <span className="homeLink" onClick={() => history.push("/listings")}>
           Shop
         </span>

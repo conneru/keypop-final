@@ -85,3 +85,15 @@
   padding-right: 25px;
   cursor: pointer;
 }
+
+.input-icons i {
+  position: absolute;
+  color: grey;
+  top: 20px;
+}
+
+#searchbar {
+  text-indent: 20px;
+  height: 20px;
+  width: 250px;
+}

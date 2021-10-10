@@ -107,3 +107,24 @@ def get_one_listing(id):
     listing = Listing.query.get(id)
     
     return listing.to_dict()
+
+    
+@listings_routes.route('/genre',methods=["POST"])
+def genre_listings():
+    content = request.get_json();
+    listings = Listing.query.filter(Listing.sold ==False).order_by(Listing.id.desc()).all()
+
+    if content['category']:
+        listings = filter(lambda listing: listing.category == content['category'],listings )
+    if content['subcategory']:
+        listings = filter(lambda listing: listing.subcategory == content['subcategory'],listings )
+    if content['condition']:
+        listings = filter(lambda listing: listing.condition == content['condition'],listings )
+    if content['search']:
+        listings = filter(lambda listing: content['search'] in listing.description,listings )
+    
+
+    # print('==================',content['genre'])
+
+
+    return {'listings':[listing.to_dict() for listing in listings]}

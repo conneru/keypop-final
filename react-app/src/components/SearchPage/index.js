@@ -1,54 +1,73 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 import { fetchAllListings, fetchByGenre } from "../../store/listing";
 // import EditListingModal from "../EditListing";
 import ListingPreview from "../ListingPreview";
 
 import "./Listings.css";
 
-function AllListings() {
+function SearchPage() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState("");
   const [subcategory, setSubCategory] = useState("");
   const [condition, setCondition] = useState("");
-  const search = document.getElementById("searchbar")?.value;
+  const { query } = useParams();
+
+  useEffect(() => {
+    dispatch(
+      fetchByGenre({
+        search: query,
+        category: "",
+        subcategory: "",
+        condition: "",
+      })
+    );
+  }, [dispatch, query]);
 
   let listings = useSelector((state) => state.listingsReducer.listings);
 
-  useEffect(() => {
-    dispatch(fetchAllListings());
-  }, [dispatch]);
-
   function searchListings(genre) {
     setCategory(genre);
-    dispatch(fetchByGenre({ category: genre, subcategory, condition, search }));
+    dispatch(
+      fetchByGenre({ category: genre, subcategory, condition, search: query })
+    );
   }
   function searchListingSub(subcategory) {
     setSubCategory(subcategory);
-    dispatch(fetchByGenre({ category, subcategory, condition, search }));
+    dispatch(fetchByGenre({ category, subcategory, condition, search: query }));
   }
   function searchListingCon(condition) {
     setCondition(condition);
-    dispatch(fetchByGenre({ category, subcategory, condition, search }));
+    dispatch(fetchByGenre({ category, subcategory, condition, search: query }));
   }
 
   function categoryExit() {
     setCategory("");
-    dispatch(fetchByGenre({ category: "", subcategory, condition, search }));
+    dispatch(
+      fetchByGenre({ category: "", subcategory, condition, search: query })
+    );
   }
   function subCategoryExit() {
     setSubCategory("");
-    dispatch(fetchByGenre({ category, subcategory: "", condition, search }));
+    dispatch(
+      fetchByGenre({ category, subcategory: "", condition, search: query })
+    );
   }
   function conditionExit() {
     setCondition("");
-    dispatch(fetchByGenre({ category, subcategory, condition: "", search }));
+    dispatch(
+      fetchByGenre({ category, subcategory, condition: "", search: query })
+    );
   }
 
   return (
     <div className="allContain">
       <div className="wrapper">
-        <h1 className="allTitle">Shop things we love</h1>
+        <div className="allTitle">
+          <p>{listings.length} Results for</p>
+          <h3>{`"${query}"`}</h3>
+        </div>
         <div>
           <div className="searchOpt">
             <div>
@@ -156,4 +175,4 @@ function AllListings() {
   );
 }
 
-export default AllListings;
+export default SearchPage;
